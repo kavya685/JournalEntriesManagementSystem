@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      # The full connection string from your Java code
+      uri: mongodb+srv://kavya:kkaavvyyaa@cluster0.niiwvsc.mongodb.net/journaldb?appName=Cluster0
+      # Replaces your getDatabaseName() method
+      database: journaldb
+      # Replaces your autoIndexCreation() override
+      auto-index-creation: true
