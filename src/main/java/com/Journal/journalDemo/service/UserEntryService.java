@@ -18,6 +18,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+// the below annotation is for logging, it will create a logger
+// instance for this class and we can use it to log messages
+// at different levels (info, debug, error, etc.)
+// without having to manually create a logger instance.
+// It simplifies the logging process and helps in tracking
+// the flow of the application and debugging issues.
 @Slf4j
 
 public class UserEntryService {

@@ -7,3 +7,18 @@ spring:
       database: journaldb
       # Replaces your autoIndexCreation() override
       auto-index-creation: true
+
+# adding logging level in yml file
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+
+# adding root, this will affect entire package and will show only error logs
+#logging:
+#    level:
+#      root: ERROR
+
+# turning off logging for particular package
+#logging:
+#    level:
+#      com.Journal.journalDemo.service: OFF
