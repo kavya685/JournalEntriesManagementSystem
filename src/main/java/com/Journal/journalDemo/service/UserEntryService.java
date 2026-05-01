@@ -6,6 +6,7 @@ import com.Journal.journalDemo.entity.JournalEntry;
 import com.Journal.journalDemo.entity.User;
 import com.Journal.journalDemo.repository.JournalEntryRepository;
 import com.Journal.journalDemo.repository.UserEntryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
+
 public class UserEntryService {
 
     @Autowired
@@ -28,6 +31,8 @@ public class UserEntryService {
         userEntry.setPassword(passwordEncoder.encode(userEntry.getPassword()));
         userEntry.setRoles(List.of("USER"));
         userEntryRepository.save(userEntry);
+        //trying logger
+        log.info("user registered with username: {}" , userEntry.getUsername());
     }
 
     public void registerAdmin(User userEntry)

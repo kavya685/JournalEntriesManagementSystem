@@ -32,7 +32,7 @@ public class SpringSecurity {
         http
                 .csrf(csrf -> csrf.disable())  // for Postman/API testing
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/user/**","/journal/**","/journal").permitAll()
+                        .requestMatchers("/user","/user/**","/journal/**","/journal").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
