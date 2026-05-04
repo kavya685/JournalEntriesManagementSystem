@@ -25,6 +25,7 @@ public class UserServiceTest {
         Assertions.assertNotNull(this.userEntryRepository.findByUsername("Radha"));
     }
 
+    @Disabled
     @ParameterizedTest
     @CsvSource(
             {

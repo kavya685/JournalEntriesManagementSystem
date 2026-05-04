@@ -28,11 +28,11 @@ public class UserEntryController {
     @Autowired
     private UserEntryRepository userEntryRepository;
 
-    @GetMapping
-    public List<User> getAllUsers()
-    {
-        return userEntryService.getAll();
-    }
+//    @GetMapping
+//    public List<User> getAllUsers()
+//    {
+//        return userEntryService.getAll();
+//    }
 
     @PostMapping
     public boolean createUser(@RequestBody User user)
@@ -60,5 +60,12 @@ public class UserEntryController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userEntryRepository.deleteByUsername(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> greetings()
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return new ResponseEntity<>("hello " + authentication.getName(), HttpStatus.OK);
     }
 }
