@@ -5,6 +5,7 @@ import com.Journal.journalDemo.entity.User;
 import com.Journal.journalDemo.repository.UserEntryRepository;
 import com.Journal.journalDemo.service.JournalEntryService;
 import com.Journal.journalDemo.service.UserEntryService;
+import com.Journal.journalDemo.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class UserEntryController {
     private UserEntryService userEntryService;
     @Autowired
     private UserEntryRepository userEntryRepository;
+    @Autowired
+    private WeatherService weatherService;
 
 //    @GetMapping
 //    public List<User> getAllUsers()
@@ -66,6 +69,11 @@ public class UserEntryController {
     public ResponseEntity<?> greetings()
     {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication.getName() != null)
+        {
+            return new ResponseEntity<>("today's weather: " + weatherService.getWeather(), HttpStatus.OK);
+        }
+        else
         return new ResponseEntity<>("hello " + authentication.getName(), HttpStatus.OK);
     }
 }
