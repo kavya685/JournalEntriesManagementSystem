@@ -22,3 +22,7 @@ logging:
 #logging:
 #    level:
 #      com.Journal.journalDemo.service: OFF
+
+weather:
+  api:
+    key: ae2e15d03b62f26ddb6cb4ad9f165e81
