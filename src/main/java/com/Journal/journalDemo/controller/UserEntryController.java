@@ -71,7 +71,7 @@ public class UserEntryController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication.getName() != null)
         {
-            return new ResponseEntity<>("today's weather: " + weatherService.getWeather(), HttpStatus.OK);
+            return new ResponseEntity<>("today's weather: " + weatherService.getWeather("San Francisco"), HttpStatus.OK);
         }
         else
         return new ResponseEntity<>("hello " + authentication.getName(), HttpStatus.OK);

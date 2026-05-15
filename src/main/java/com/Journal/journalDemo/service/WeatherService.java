@@ -1,5 +1,6 @@
 package com.Journal.journalDemo.service;
 
+import com.Journal.journalDemo.cache.AppCache;
 import com.Journal.journalDemo.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,9 @@ public class WeatherService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private AppCache appCache;
+
     // by using @Value, we make our key secure and not hard coded in our code,
     // we can change it in application.properties file without changing the code
     // make sure not to use static for the key variable, otherwise it will not work with @Value annotation
@@ -20,12 +24,9 @@ public class WeatherService {
     @Value("${weather.api.key}")
     public String key;
 
-    public final String url = "https://api.weatherstack.com/current?access_key=what&query=New%20York";
-
-
-    public WeatherResponse getWeather()
+    public WeatherResponse getWeather(String city)
     {
-        String API = url.replace("what",key);
+        String API = appCache.APP_CACHE.get("weather_api").replace("<what>",key).replace("<city>",city);
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(API, HttpMethod.GET, null, WeatherResponse.class);
         WeatherResponse body = response.getBody();
         return body;
