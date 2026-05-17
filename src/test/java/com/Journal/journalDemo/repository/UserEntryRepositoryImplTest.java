@@ -1,21 +1,23 @@
 package com.Journal.journalDemo.repository;
 
 import com.Journal.journalDemo.entity.User;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
+@SpringBootTest
 public class UserEntryRepositoryImplTest {
     @Autowired
-    MongoTemplate mongoTemplate;
-    public List<User> getUserOfSA()
+    private UserEntryRepositoryImpl userEntryRepository;
+
+    @Test
+    public void testSA()
     {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("sentimentAnalysis").is(true));
-        mongoTemplate.find(query, User.class);
-        return null;
+        userEntryRepository.getUserOfSA();
     }
 }
