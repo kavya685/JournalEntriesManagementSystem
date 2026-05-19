@@ -7,6 +7,17 @@ spring:
       database: journaldb
       # Replaces your autoIndexCreation() override
       auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: add email through which you want to send email
+    password: add app password here
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 # adding logging level in yml file
 logging:
