@@ -2,6 +2,7 @@
 
 package com.Journal.journalDemo.entity;
 
+import com.Journal.journalDemo.enumm.Enum;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -20,4 +21,5 @@ public class JournalEntry {
     private String title;
     private String content;
     private LocalDateTime date;
+    private Enum.Sentiment sentiment;
 }
